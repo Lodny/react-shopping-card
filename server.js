@@ -6,11 +6,21 @@ const shortid = require("shortid");
 const app = express();
 app.use(bodyparser.json());
 
-mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-});
+// const MONGODB_URL = "mongodb+srv://lodny:lodny@cluster0.tyk7q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const MONGODB_URL = "mongodb://localhost/react-shopping-cart-db";
+mongoose.connect(
+  MONGODB_URL,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  },
+  (err) => {
+    if (err) {
+      console.log(err);
+    }
+  }
+);
 
 const Product = mongoose.model(
   "products",
