@@ -1,1 +1,3 @@
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
+export const FILTER_BY_SIZE = "FILTER_BY_SIZE";
+export const ORDER_BY_PRICE = "ORDER_BY_PRICE";

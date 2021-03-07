@@ -5,9 +5,10 @@ import { productReducer } from "./reducers/productReducer";
 const initialState = {};
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_CPMPOSE__ || compose;
 const store = createStore(
-  combineReducers({
-    products: productReducer
-  }),
+  // combineReducers({
+  //   products: productReducer
+  // }),
+  productReducer,
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
