@@ -6,8 +6,9 @@ const shortid = require("shortid");
 const app = express();
 app.use(bodyparser.json());
 
-// const MONGODB_URL = "mongodb+srv://lodny:lodny@cluster0.tyk7q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const MONGODB_URL = "mongodb://localhost/react-shopping-cart-db";
+const MONGODB_URL =
+  "mongodb+srv://lodny:lodny@cluster0.tyk7q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const MONGODB_URL = "mongodb://localhost/react-shopping-cart-db";
 mongoose.connect(
   MONGODB_URL,
   {
