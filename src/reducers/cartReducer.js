@@ -1,4 +1,4 @@
-const { ADD_TO_CART, REMOVE_FROM_CART } = require("../types");
+const { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } = require("../types");
 
 export const cartReducer = (state, action) => {
   if (state === undefined) {
@@ -27,7 +27,7 @@ export const cartReducer = (state, action) => {
 
       return {
         ...state,
-        items: items,
+        items: items
       };
 
     case REMOVE_FROM_CART:
@@ -37,8 +37,12 @@ export const cartReducer = (state, action) => {
 
       return {
         ...state,
-        items: items,
+        items: items
       };
+
+    case CLEAR_CART:
+      // return { items: null };
+      return {};
 
     default:
       return state;

@@ -11,7 +11,7 @@ class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null,
+      product: null
     };
   }
 
@@ -113,8 +113,6 @@ export default connect(
   },
   {
     fetchProducts,
-    addToCart,
+    addToCart
   }
 )(Products);
-
-// export default Products;

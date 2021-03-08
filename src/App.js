@@ -1,6 +1,6 @@
 // feature 1
 import React from "react";
-import data from "./data.json";
+// import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
 import Cart from "./components/Cart";
@@ -8,15 +8,15 @@ import store from "./store";
 import { Provider } from "react-redux";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      products: data.products,
-      cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
-      size: "",
-      sort: "",
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     products: data.products,
+  //     cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
+  //     size: "",
+  //     sort: "",
+  //   };
+  // }
 
   // removeFromCart = (product) => {
   //   const cartItems = this.state.cartItems.filter((item) => item._id !== product._id);
@@ -72,9 +72,9 @@ class App extends React.Component {
   //   });
   // };
 
-  createOrder = (order) => {
-    alert(order);
-  };
+  // createOrder = (order) => {
+  //   alert(order);
+  // };
 
   render() {
     return (
@@ -100,9 +100,9 @@ class App extends React.Component {
               </div>
               <div className="sidebar">
                 <Cart
-                  // cartItems={this.state.cartItems}
-                  // removeFromCart={this.removeFromCart}
-                  createOrder={this.createOrder}
+                // cartItems={this.state.cartItems}
+                // removeFromCart={this.removeFromCart}
+                // createOrder={this.createOrder}
                 />
               </div>
             </div>
