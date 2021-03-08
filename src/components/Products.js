@@ -5,12 +5,13 @@ import Zoom from "react-reveal/Zoom";
 import Modal from "react-modal";
 import { connect } from "react-redux";
 import { fetchProducts } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
 
 class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
     };
   }
 
@@ -43,19 +44,13 @@ class Products extends Component {
                 return (
                   <li key={product._id}>
                     <div className="product">
-                      <a
-                        href={"#" + product._id}
-                        onClick={() => this.openModal(product)}
-                      >
+                      <a href={"#" + product._id} onClick={() => this.openModal(product)}>
                         <img src={product.image} alt={product.title} />
                         <p>{product.title}</p>
                       </a>
                       <div className="product-price">
                         <div>{formatCurrency(product.price)}</div>
-                        <button
-                          onClick={() => this.props.addToCart(product)}
-                          className="button primary"
-                        >
+                        <button onClick={() => this.props.addToCart(product)} className="button primary">
                           Add to Cart
                         </button>
                       </div>
@@ -114,10 +109,11 @@ class Products extends Component {
 export default connect(
   (state) => {
     console.log("Product : connect() ", state);
-    return { products: state.products, filteredItems: state.filteredItems };
+    return { products: state.products.products, filteredItems: state.products.filteredItems };
   },
   {
-    fetchProducts
+    fetchProducts,
+    addToCart,
   }
 )(Products);
 

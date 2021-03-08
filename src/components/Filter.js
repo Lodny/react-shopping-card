@@ -11,17 +11,12 @@ class Filter extends Component {
           <div>Loading...</div>
         ) : (
           <div className="filter">
-            <div className="filter-result">{this.props.count} Products</div>
+            <div className="filter-result">{this.props.filteredItems.length} Products</div>
             <div className="filter-sort">
               Order{" "}
               <select
                 value={this.props.sort}
-                onChange={(e) =>
-                  this.props.sortProducts(
-                    this.props.filteredItems,
-                    e.target.value
-                  )
-                }
+                onChange={(e) => this.props.sortProducts(this.props.filteredItems, e.target.value)}
               >
                 <option value="latest">Latest</option>
                 <option value="lowest">Lowest</option>
@@ -32,9 +27,7 @@ class Filter extends Component {
               Filter{" "}
               <select
                 value={this.props.size}
-                onChange={(e) =>
-                  this.props.filterProducts(this.props.products, e.target.value)
-                }
+                onChange={(e) => this.props.filterProducts(this.props.products, e.target.value, this.props.sort)}
               >
                 <option value="All">All</option>
                 <option value="XS">XS</option>
@@ -54,18 +47,17 @@ class Filter extends Component {
 
 export default connect(
   (state) => {
-    console.log("connect() : ", state);
+    console.log("Filter : connect() : ", state);
 
     return {
-      size: state.size,
-      sort: state.sort,
-      // count: state.products.length
-      products: state.products,
-      filteredItems: state.filteredItems
+      size: state.products.size,
+      sort: state.products.sort,
+      products: state.products.products,
+      filteredItems: state.products.filteredItems,
     };
   },
   {
     filterProducts,
-    sortProducts
+    sortProducts,
   }
 )(Filter);
