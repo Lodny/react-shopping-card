@@ -8,21 +8,21 @@ export const productReducer = (state = {}, action) => {
       // console.log("Reducer : ", action.type);
       // console.log(state);
       // console.log(action.payload);
-      return { products: action.payload, filteredItems: action.payload };
+      return { products: action.payload.products, filteredItems: action.payload.products };
 
     case FILTER_BY_SIZE:
       // console.log(state);
       return {
         ...state,
         size: action.payload.size,
-        filteredItems: action.payload.products
+        filteredItems: action.payload.products,
       };
 
     case ORDER_BY_PRICE:
       return {
         ...state,
         sort: action.payload.sort,
-        filteredItems: action.payload.products
+        filteredItems: action.payload.products,
       };
 
     default:

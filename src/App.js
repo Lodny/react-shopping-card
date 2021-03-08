@@ -14,72 +14,63 @@ class App extends React.Component {
       products: data.products,
       cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
       size: "",
-      sort: ""
+      sort: "",
     };
   }
 
-  removeFromCart = (product) => {
-    const cartItems = this.state.cartItems.filter(
-      (item) => item._id !== product._id
-    );
-    this.setState({ cartItems: cartItems });
-    console.log("removeFromCart() : ", cartItems);
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  };
+  // removeFromCart = (product) => {
+  //   const cartItems = this.state.cartItems.filter((item) => item._id !== product._id);
+  //   this.setState({ cartItems: cartItems });
+  //   console.log("removeFromCart() : ", cartItems);
+  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  // };
 
-  addToCart = (product) => {
-    const cartItems = [...this.state.cartItems];
-    let alreadyInCart = false;
-    cartItems.forEach((item) => {
-      if (item._id === product._id) {
-        item.count++;
-        alreadyInCart = true;
-      }
-    });
+  // addToCart = (product) => {
+  //   const cartItems = [...this.state.cartItems];
+  //   let alreadyInCart = false;
+  //   cartItems.forEach((item) => {
+  //     if (item._id === product._id) {
+  //       item.count++;
+  //       alreadyInCart = true;
+  //     }
+  //   });
 
-    if (!alreadyInCart) {
-      cartItems.push({ ...product, count: 1 });
-    }
+  //   if (!alreadyInCart) {
+  //     cartItems.push({ ...product, count: 1 });
+  //   }
 
-    this.setState({ cartItems: cartItems });
-    console.log("addToCart() : ", cartItems);
+  //   this.setState({ cartItems: cartItems });
+  //   console.log("addToCart() : ", cartItems);
 
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  };
+  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  // };
 
-  filterAndSortProducts = (size, sort) => {
-    let newProducts = data.products;
-    if (size !== "")
-      newProducts = data.products.filter((product) =>
-        product.availableSizes.includes(size)
-      );
+  // filterAndSortProducts = (size, sort) => {
+  //   let newProducts = data.products;
+  //   if (size !== "") newProducts = data.products.filter((product) => product.availableSizes.includes(size));
 
-    if (sort !== "Latest") {
-      newProducts = newProducts
-        .slice()
-        .sort((a, b) =>
-          sort === "lowest" ? a.price - b.price : b.price - a.price
-        );
-    }
+  //   if (sort !== "Latest") {
+  //     newProducts = newProducts.slice().sort((a, b) => (sort === "lowest" ? a.price - b.price : b.price - a.price));
+  //   }
 
-    return newProducts;
-  };
+  //   return newProducts;
+  // };
 
-  sortProducts = (e) => {
-    const sort = e.target.value;
-    this.setState({
-      sort: sort,
-      products: this.filterAndSortProducts(this.state.size, sort)
-    });
-  };
+  // sortProducts = (e) => {
+  //   const sort = e.target.value;
+  //   this.setState({
+  //     sort: sort,
+  //     products: this.filterAndSortProducts(this.state.size, sort),
+  //   });
+  // };
 
-  filterProducts = (e) => {
-    const size = e.target.value;
-    this.setState({
-      size: size,
-      products: this.filterAndSortProducts(size, this.state.sort)
-    });
-  };
+  // filterProducts = (e) => {
+  //   const size = e.target.value;
+  //   this.setState({
+  //     size: size,
+  //     products: this.filterAndSortProducts(size, this.state.sort),
+  //   });
+  // };
 
   createOrder = (order) => {
     alert(order);
@@ -109,8 +100,8 @@ class App extends React.Component {
               </div>
               <div className="sidebar">
                 <Cart
-                  cartItems={this.state.cartItems}
-                  removeFromCart={this.removeFromCart}
+                  // cartItems={this.state.cartItems}
+                  // removeFromCart={this.removeFromCart}
                   createOrder={this.createOrder}
                 />
               </div>
